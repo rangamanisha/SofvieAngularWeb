@@ -7,15 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   _equipmentlist:equipment[];
-  // _student:student;
-  // _studentlist:student[]=[];
+  _operator:operator;
+  _operatorlist:operator[]=[];
   uniquekey:number=0;
 
 
   ngOnInit()
   {
     this.getEquipment();
-    // this._student= new student();
+    this._operator= new operator();
   }
 
   getEquipment()
@@ -35,9 +35,25 @@ export class AppComponent {
   {
     console.log(this._equipmentlist);
   }
+
+  onsubmit()
+  {
+    this._operator.operatorid = this._equipmentlist.filter(x=>x.isselected==true).map(x=>x.id).join(",").toString();
+    this._operator.operatorname = this._equipmentlist.filter(x=>x.isselected==true).map(x=>x.name).join(",").toString();
+    this.uniquekey = this.uniquekey + 1;
+    this._operator.id = this.uniquekey;
+    this._operatorlist.push(this._operator);
+  }
 }
 class equipment{
   id: number;
   name: string;
   isselected: boolean;
+}
+class operator
+{
+  id: number;
+  name: string;
+  operatorid: string;
+  operatorname: string;
 }
