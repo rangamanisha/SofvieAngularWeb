@@ -43,16 +43,17 @@
   <table class="table table-striped">
     <tr *ngFor="let item of _operatorlist">
       <thead>
-        <td>id</td>
-        <td>name</td>
-        <td>operator</td>
-        <td>action</td>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Operator</td>
+        <td>Action</td>
       </thead>
       <tbody>
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.operatorname }}</td>
-        <td><input type="text" value="edit" /></td>
+        <td><button class="btn btn-info">Edit</button></td>
+        <td><button class="btn btn-danger">Delete</button></td>
       </tbody>
     </tr>
   </table>
