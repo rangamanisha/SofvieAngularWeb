@@ -1,39 +1,59 @@
-<form (ngSubmit)="onsubmit()">
-  <div class="container">
-     <div class="row" style="font-size: 20px;">
-    <label>Operator: </label>
-    <input type="text" name="operatorname" [(ngModel)] = "_operator.name">
-  </div>
-
-    <div  style="font-size: 20px;"><label>Equipments:</label></div>
-  <div *ngFor="let item of _equipmentlist" >
-    <div>
-    <div class="col-8 col-chk"><input type="checkbox" name="{{item.name}}" (change) = "onchange()" [(ngModel)] = "item.isselected"></div>
-    <div class="col-35"><label>{{item.name}}</label></div>
+<div class="container">
+  <form (ngSubmit)="onsubmit()">
+    <div class="row" style="font-size: 20px">
+      <label class="form-label">Operator: </label>
+      <input
+        class="form-control"
+        type="text"
+        name="operatorname"
+        [(ngModel)]="_operator.name"
+      />
     </div>
-    
-  </div>
-  <div class="row">
-    <input type="submit" value="submit">
-  </div>
-  </div>
-</form>
+    <div class="h3"><label>Equipments:</label></div>
+    <div class="container">
+      <div *ngFor="let item of _equipmentlist">
+        <div class="d-flex">
+          <div class="col-1 d-flex justify-content-center">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="{{ item.name }}"
+              (change)="onchange()"
+              [(ngModel)]="item.isselected"
+            />
+          </div>
+          <div class="col-4">
+            <label>{{ item.name }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          type="submit"
+          value="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 
-<table class="table">
-  <tr *ngFor="let item of _operatorlist">
-  <thead>
-   <td>id</td>
-   <td>name</td>
-   <td>operator</td>
-   <td>action</td>
-
-  </thead>
-  <tbody>
-    <td>{{item.id}}</td>
-    <td>{{item.name}}</td>
-    <td>{{item.operatorname}}</td>
-    <td><input type="text" value="edit"></td>
-
-  </tbody>
-</tr>
-</table>
+  <table class="table table-striped">
+    <tr *ngFor="let item of _operatorlist">
+      <thead>
+        <td>id</td>
+        <td>name</td>
+        <td>operator</td>
+        <td>action</td>
+      </thead>
+      <tbody>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.operatorname }}</td>
+        <td><input type="text" value="edit" /></td>
+      </tbody>
+    </tr>
+  </table>
+</div>
